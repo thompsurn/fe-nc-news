@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    axios.get('api/articles')
+    axios.get('https://thompsurn-be-nc-news.onrender.com/api/articles')
       .then(response => {
         setArticles(response.data.articles);
       })
@@ -20,7 +21,9 @@ const ArticleList = () => {
       <ul>
         {articles.map(article => (
           <li key={article._id}>
-            <h3>{article.title}</h3>
+            <Link to={`/articles/${article._id}`}>
+              <h3>{article.title}</h3>
+            </Link>
             <p>Author: {article.author}</p>
             <p>Date: {new Date(article.date).toLocaleDateString()}</p>
             <p>{article.summary}</p>
@@ -32,6 +35,3 @@ const ArticleList = () => {
 };
 
 export default ArticleList;
-
-
-
