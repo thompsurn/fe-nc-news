@@ -9,7 +9,7 @@ const ArticleDetail = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://thompsurn-be-nc-news.onrender.com/api/${id}`)
+    axios.get(`https://thompsurn-be-nc-news.onrender.com/api/articles/${id}`)
       .then(response => {
         setArticle(response.data.article);
         setLoading(false);
@@ -39,3 +39,6 @@ const ArticleDetail = () => {
 };
 
 export default ArticleDetail;
+
+
+
